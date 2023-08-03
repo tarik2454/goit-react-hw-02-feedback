@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Statistics } from './Statistics/Statistics';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Section } from './Section/Section';
-import { Container } from '../components/Container/Container';
+import { StyledWrapper, StyledSmollTitle } from './App.styled';
+import { StyledMain } from 'style/GlobalStyle';
 
 export class App extends Component {
   state = {
@@ -35,8 +35,8 @@ export class App extends Component {
       this.countPositiveFeedbackPercentage().toFixed(2);
 
     return (
-      <>
-        <div className="container">
+      <StyledMain>
+        <StyledWrapper>
           <Section title="Please leave feedback">
             <FeedbackOptions
               options={Object.keys(this.state)}
@@ -55,15 +55,12 @@ export class App extends Component {
               />
             </Section>
           ) : (
-            <>
-              {Notify.failure('There is no feedback')}
-              <Container>
-                <h2>There is no feedback</h2>
-              </Container>
-            </>
+            // <StyledContainer>
+            <StyledSmollTitle>There is no feedback</StyledSmollTitle>
+            // </StyledContainer>
           )}
-        </div>
-      </>
+        </StyledWrapper>
+      </StyledMain>
     );
   }
 }
