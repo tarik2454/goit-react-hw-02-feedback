@@ -22,10 +22,10 @@ export class App extends Component {
   };
 
   countPositiveFeedbackPercentage = () => {
-    const { good } = this.state;
+    const { good, neutral } = this.state;
     const total = this.countTotalFeedback();
     if (total === 0) return 0;
-    return (good / (total - this.state.neutral)) * 100;
+    return (good + neutral / total) * 100;
   };
 
   render() {
@@ -55,9 +55,7 @@ export class App extends Component {
               />
             </Section>
           ) : (
-            // <StyledContainer>
             <StyledSmollTitle>There is no feedback</StyledSmollTitle>
-            // </StyledContainer>
           )}
         </StyledWrapper>
       </StyledMain>

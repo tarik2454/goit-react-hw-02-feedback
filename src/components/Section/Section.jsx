@@ -20,4 +20,5 @@ const StyledSmollTitle = styled.h2`
 
 Section.propTypes = {
   title: PropTypes.string,
+  children: PropTypes.node,
 };
